@@ -1,34 +1,15 @@
-import { Tabs } from "antd";
-import Products from "./components/Products";
-import Carts from "./components/Carts";
-import Categories from "./components/Categories";
-import Users from "./components/Users";
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import ProductDetail from "./pages/ProductDetail";
+import UserDetail from "./pages/UserDetail";
 const App = () => {
-  const items = [
-    {
-      key: "1",
-      label: "Products",
-      children: <Products />,
-    },
-    {
-      key: "2",
-      label: "Carts",
-      children: <Carts />,
-    },
-    {
-      key: "3",
-      label: "Categories",
-      children: <Categories />,
-    },
-    {
-      key: "4",
-      label: "Users",
-      children: <Users />,
-    },
-  ];
   return (
     <div>
-      <Tabs defaultActiveKey="1" items={items} />
+      <Routes>
+        <Route element={<Home />} path="/" />
+        <Route element={<ProductDetail />} path="/product/:productId" />
+        <Route element={<UserDetail />} path="/user/:userId" />
+      </Routes>
     </div>
   );
 };
